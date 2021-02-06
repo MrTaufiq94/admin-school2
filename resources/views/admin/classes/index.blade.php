@@ -1,4 +1,4 @@
-@extends('layouts.app',['title'=>'Berita'])
+@extends('layouts.app',['title'=>'Classes'])
 
 @section('header')
 <div class="container-fluid">
@@ -23,11 +23,11 @@
     <li class="nav-item"><a href="#all-classes" class="nav-link active" data-toggle="tab">Manage Classes</a></li>
     {{-- <li class="nav-item"><a href="#new-class" class="nav-link" data-toggle="tab"><i class="icon-plus2"></i> Create New Class</a></li> --}}
 </ul>
-
+<br>
 <div class="tab-content">
 
     <div class="tab-pane fade show active" id="all-classes">
-        <table class="table datatable-button-html5-columns">
+        <table id="dataTable" class="table table-hover table-striped table-bordered" style="width:100%">
             <thead>
             <tr>
                 <th>S/N</th>
@@ -73,7 +73,5 @@
     </div>
 
 </div>
-
-                
 
 @stop
