@@ -9,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
+    <!-- Bootstrap 4 -->
+    
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- overlayScrollbars -->
@@ -334,7 +336,8 @@
         });
 
         $(document).ready(function() {
-            $('#dataTable').DataTable( {
+            $('#dataTable').DataTable({
+                ordering: false,
                 dom: 'Bfrtip',
                 buttons: [
                     {
