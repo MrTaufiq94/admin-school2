@@ -43,27 +43,10 @@
                     <td>{{ $c->name }}</td>
                     <td>{{ $c->class_type->name }}</td>
                     <td class="text-center">
-                        <div class="list-icons">
-                            <div class="dropdown">
-                                <a href="#" class="list-icons-item" data-toggle="dropdown">
-                                    <i class="icon-menu9"></i>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-left">
-                                    {{-- @if(Qs::userIsTeamSA()) --}}
-                                    {{--Edit--}}
-                                    {{-- {{ route('classes.edit', $c->id) }} --}}
-                                    <a href="" class="dropdown-item"><i class="icon-pencil"></i> Edit</a>
-                                    {{-- @endif --}}
-                                        {{-- @if(Qs::userIsSuperAdmin()) --}}
-                                    {{--Delete--}}
-                                    {{-- {{ route('classes.destroy', $c->id) }} --}}
-                                    <a id="{{ $c->id }}" onclick="confirmDelete(this.id)" href="#" class="dropdown-item"><i class="icon-trash"></i> Delete</a>
-                                    <form method="post" id="item-delete-{{ $c->id }}" action="" class="hidden">@csrf @method('delete')</form>
-                                        {{-- @endif --}}
-
-                                </div>
-                            </div>
+                        <div class="btn-group">
+                            <a href="{{ route('admin.classes.edit', $c->id) }}" class="btn btn-success btn-xs"><i class="fa fa-edit"></i> Edit</a>
+                            &nbsp;
+                            <a href="" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>  
                         </div>
                     </td>
                 </tr>

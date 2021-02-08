@@ -16,4 +16,13 @@ class MyClassController extends Controller
 
         return view('admin.classes.index', $d);
     }
+
+    public function edit($id)
+    {
+        $d['c'] = $c = MyClass::find($id);
+
+        return  view('admin.classes.edit', $d) ;
+    }
+
+    
 }
