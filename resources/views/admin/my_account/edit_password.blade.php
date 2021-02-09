@@ -64,7 +64,7 @@
         $.ajax({
            url:"{{ route('user-password.update') }}",
            method: 'PUT',
-            dataType: 'json',
+             dataType: 'json',
            data:{
             //    'id':id,
                //"_token": token,

@@ -44,5 +44,20 @@ class MyClassController extends Controller
         }
     }
 
+    public function destroy($id)
+    {
+        $c = MyClass::find($id);
+        $c->delete();
+        if($c){
+            return response()->json([
+                'status' => 'success'
+            ]);
+        }else{
+            return response()->json([
+                'status' => 'error'
+            ]);
+        }
+    }
+
     
 }

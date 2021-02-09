@@ -44,9 +44,12 @@
                     <td>{{ $c->class_type->name }}</td>
                     <td class="text-center">
                         <div class="btn-group">
-                            <a href="{{ route('admin.classes.edit', $c->id) }}" class="btn btn-success btn-xs"><i class="fa fa-edit"></i> Edit</a>
+                            <a href="{{ route('admin.classes.edit', $c->id) }}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit</a>
                             &nbsp;
-                            <a href="" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>  
+                            <button onClick="Delete(this.id)" class="btn btn-sm btn-danger" id="{{ $c->id }}">
+                                <i class="fa fa-trash"> Delete</i>
+                            </button>  
+                            
                         </div>
                     </td>
                 </tr>
@@ -56,5 +59,68 @@
     </div>
 
 </div>
+
+<script>
+    //ajax delete
+    function Delete(id)
+        {
+            var id = id;
+            var token = $("meta[name='csrf-token']").attr("content");
+
+            Swal.fire({
+                title: "APAKAH ANDA PASTI ?",
+                text: "INGIN MENGHAPUSKAN DATA INI!",
+                icon: "warning",
+                showCancelButton: true,
+                cancelButtonText: 'Tidak',
+                confirmButtonText: 'Ya',
+                reverseButtons:true
+            }).then((result) => {
+                if (result.value==true) {
+
+                    //ajax delete
+                    jQuery.ajax({
+                        url: "{{ route("admin.classes.destroy", $c->id) }}",
+                        data:     {
+                            "id": id,
+                            "_token": token,
+                            "_method": 'delete'
+                        },
+                        type: "POST",
+                        success: function (response) {
+                            if (response.status == "success") {
+                                Swal.fire({
+                                    title: 'BERJAYA!',
+                                    text: 'DATA BERJAYA DIHAPUSKAN!',
+                                    icon: 'success',
+                                    timer: 1000,
+                                    showConfirmButton: false,
+                                    showCancelButton: false,
+                                    buttons: false,
+                                }).then(function() {
+                                    location.reload();
+                                });
+                            }else{
+                                Swal.fire({
+                                    title: 'GAGAL!',
+                                    text: 'DATA GAGAL DIHAPUSKAN!',
+                                    icon: 'error',
+                                    timer: 1000,
+                                    showConfirmButton: false,
+                                    showCancelButton: false,
+                                    buttons: false,
+                                }).then(function() {
+                                    location.reload();
+                                });
+                            }
+                        }
+                    });
+
+                } else {
+                    return true;
+                }
+            })
+        }
+</script>
 
 @stop
