@@ -24,5 +24,25 @@ class MyClassController extends Controller
         return  view('admin.classes.edit', $d) ;
     }
 
+    public function update(Request $req, $id)
+    {
+        $this->validate($req, [
+            'name' => 'required|string|min:3',
+        ]);
+
+        $c = MyClass::find($id);
+        $c->update(["name"=>$req->name]);
+        
+        if($c) {
+            return redirect()
+            ->route('admin.classes.index')
+            ->with('toast_success','Class has been updated!');
+        } else {
+            return redirect()
+            ->route('admin.classes.index')
+            ->with('toast_error','Class failed to update!');
+        }
+    }
+
     
 }
