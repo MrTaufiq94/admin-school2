@@ -27,6 +27,9 @@
 <div class="tab-content">
 
     <div class="tab-pane fade show active" id="all-classes">
+        <a href="{{ route('admin.classes.create') }}"  class="btn btn-primary mr-1 btn-sm"><i class="fa fa-plus-circle"></i> Add</a>
+        <br>
+        <br>
         <table id="dataTable" class="table table-striped table-bordered" style="width:100%">
             <thead>
             <tr>

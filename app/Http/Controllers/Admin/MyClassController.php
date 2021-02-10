@@ -17,6 +17,14 @@ class MyClassController extends Controller
         return view('admin.classes.index', $d);
     }
 
+    public function create()
+    {
+        $d['my_classes'] = MyClass::orderBy('name', 'asc')->with('class_type')->get();
+        $d['class_types'] = ClassType::orderBy('name', 'asc')->get();
+
+        return view('admin.classes.create', $d);
+    }
+
     public function edit($id)
     {
         $d['c'] = $c = MyClass::find($id);
