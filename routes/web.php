@@ -66,11 +66,12 @@ Route::prefix('admin')->group(function () {
         });
 
         Route::resource('/classes', 'App\Http\Controllers\Admin\MyClassController', ['as' => 'admin']);
+        Route::resource('/students', 'App\Http\Controllers\Admin\StudentRecordController', ['as' => 'admin']);
         
-        // Route::group(['prefix' => 'classes'], function() {
+        // Route::group(['prefix' => 'students'], function() {
         //     Route::get('/', [App\Http\Controllers\Admin\MyClassController::class, 'index'])->name('admin.classes.index');
-        //     Route::get('/', [App\Http\Controllers\Admin\MyClassController::class, 'edit'])->name('admin.classes.edit');
-            // Route::post('/', [App\Http\Controllers\Admin\SettingController::class, 'update'])->name('admin.setting.update');
+        //     //Route::get('/', [App\Http\Controllers\Admin\MyClassController::class, 'edit'])->name('admin.classes.edit');
+            //Route::post('/', [App\Http\Controllers\Admin\SettingController::class, 'update'])->name('admin.setting.update');
         //});
 
     });

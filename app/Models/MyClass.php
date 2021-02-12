@@ -15,4 +15,9 @@ class MyClass extends Model
     {
         return $this->belongsTo(ClassType::class);
     }
+
+    public function student_record()
+    {
+        return $this->hasMany(StudentRecord::class);
+    }
 }

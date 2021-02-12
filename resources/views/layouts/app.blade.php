@@ -227,6 +227,45 @@
                                 </ul>
                             </li>
 
+                            <li class="nav-item has-treeview">
+                                <a href="#" class="nav-link {{ setActive('admin/students') }}">
+                                    <i class="nav-icon fas fa-users"></i>
+                                    <p>
+                                        Students
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                               
+                                
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.students.create') }}" class="nav-link ">
+                                            {{-- <i class="fas fa-unlock nav-icon"></i> --}}
+                                            <p class="ml-4">Admit Student</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="" class="nav-link">
+                                            {{-- <i class="fas fa-key nav-icon"></i> --}}
+                                            <p class="ml-4">Student Information</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="" class="nav-link">
+                                            {{-- <i class="fas fa-users nav-icon"></i> --}}
+                                            <p class="ml-4">Student Promotion</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="" class="nav-link">
+                                            {{-- <i class="fas fa-users nav-icon"></i> --}}
+                                            <p class="ml-4">Student Graduated</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+
                             <li class="nav-item">
                                 <a href="{{ route('admin.classes.index') }}" class="nav-link {{ setActive('admin/classes') }}">
                                     <i class="fas fa-user nav-icon"></i>
