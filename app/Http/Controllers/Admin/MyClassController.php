@@ -20,10 +20,44 @@ class MyClassController extends Controller
     public function create()
     {
         $d['my_classes'] = MyClass::orderBy('name', 'asc')->with('class_type')->get();
-        $d['class_types'] = ClassType::orderBy('name', 'asc')->get();
+        $d['class_types'] = ClassType::orderBy('id', 'asc')->get();
+        // $d['class_types'] = ClassType::whereNotExists(function($query){
+        //     $query->select(DB::raw(1))
+        //           ->from('my_classes');
+        // })->orderBy('id', 'asc')->get();
 
         return view('admin.classes.create', $d);
     }
+
+    public function store(Request $req)
+    {
+        //print_r($req->all());exit();
+        $this->validate($req, [
+            'name' => 'required|string|min:3',
+            'class_type_id' => 'required'
+        ]);
+        if(MyClass::where('name',$req->name)->exists()){
+            return redirect()
+            ->route('admin.classes.create')
+            ->with('toast_error','Name Already Exist!');
+        }else{
+            $c = MyClass::create([
+                'name' => $req->name,
+                'class_type_id' => $req->class_type_id
+            ]);
+        }
+
+        if($c) {
+            return redirect()
+            ->route('admin.classes.index')
+            ->with('toast_success','Class has been inserted!');
+        }else {
+            return redirect()
+            ->route('admin.classes.index')
+            ->with('toast_error','Class failed to insert!');
+        }
+       
+    } 
 
     public function edit($id)
     {

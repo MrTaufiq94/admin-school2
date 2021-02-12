@@ -20,17 +20,17 @@
 @section('content')
 
 <ul class="nav nav-tabs nav-tabs-highlight">
-    <li class="nav-item"><a href="#edit-class" class="nav-link active" data-toggle="tab">Add Class</a></li>
+    <li class="nav-item"><a href="#add-class" class="nav-link active" data-toggle="tab">Add Class</a></li>
     {{-- <li class="nav-item"><a href="#new-class" class="nav-link" data-toggle="tab"><i class="icon-plus2"></i> Create New Class</a></li> --}}
 </ul>
 <br>
 <div class="tab-content">
 
-    <div class="tab-pane fade show active" id="edit-class">
+    <div class="tab-pane fade show active" id="add-class">
 
         <div class="row">
             <div class="col-md-6">
-                <form class="ajax-store" method="post" action="{{ route('admin.classes.store') }}">
+                <form  method="post" action="{{ route('admin.classes.store') }}">
                     @csrf
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label font-weight-semibold">Name <span class="text-danger">*</span></label>
@@ -51,7 +51,7 @@
                     </div>
 
                     <div class="text-right">
-                        <button id="ajax-btn" type="submit" class="btn btn-primary">Submit form <i class="icon-paperplane ml-2"></i></button>
+                        <button  type="submit" class="btn btn-primary">Submit form <i class="ml-2"></i></button>
                     </div>
                 </form>
             </div>
